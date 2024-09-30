@@ -77,6 +77,15 @@ fun ScreenUser() {
         ) {
             Text("Listar Usuarios", fontSize = 16.sp)
         }
+        Button(
+            onClick = {
+                coroutineScope.launch {
+                    dao.deleteLastUser()
+                }
+            }
+        ) {
+            Text("Eliminar Último Usuario", fontSize = 16.sp)
+        }
         Text(text = dataUser.value, fontSize = 20.sp)
     }
 }

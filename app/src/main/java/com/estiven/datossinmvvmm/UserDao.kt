@@ -9,6 +9,9 @@ interface UserDao {
     @Query("SELECT * FROM User")
     suspend fun getAll(): List<User>
 
+    @Query("DELETE FROM User WHERE uid = (SELECT MAX(uid) FROM User)")
+    suspend fun deleteLastUser()
+
     @Insert
     suspend fun insert(user: User)
 }
